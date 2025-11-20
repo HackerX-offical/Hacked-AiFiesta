@@ -1,6 +1,5 @@
 # Hacked AiFiesta
 
-**Report Type:** Responsible Disclosure  
 **Assessment Method:** Manual Testing + Proxy Interception + Client-side Inspection  
 **Target:** aifiesta.ai Platform  
 
