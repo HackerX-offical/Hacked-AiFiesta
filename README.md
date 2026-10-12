@@ -1,11 +1,51 @@
-# Hacked AiFiesta
+# Hacked-AiFiesta
 
-**Assessment Method:** Manual Testing + Proxy Interception + Client-side Inspection  
-**Target:** aifiesta.ai Platform  
+Structured security disclosure for the AiFiesta (`aifiesta.ai`) platform: premium model bypass, message-limit abuse, and client-side trust failures.
+
+## Why this exists
+
+Captures critical client/API authorization flaws discovered during authorized testing so the vendor can remediate and other teams can learn from concrete PoCs. Documentation-only — no exploit service ships from this repo.
+
+## Features
+
+- Severity-ranked vulnerability write-ups with reproduction steps
+- curl PoCs for premium model and unlimited-message abuse
+- Business impact matrix and recommended server-side fixes
+
+## Install
+
+```bash
+git clone https://github.com/HackerX-offical/Hacked-AiFiesta.git
+cd Hacked-AiFiesta
+```
+
+## Quick start
+
+Read `README.md` sections below; validate PoCs only on accounts and systems you are authorized to test.
+
+## Output
+
+Markdown disclosure sections, request/response examples, and an impact summary table.
+
+## Develop
+
+```bash
+# Org standards CI (local)
+test -f LICENSE NOTICE ARCHITECTURE.md README.md
+```
+
+## Architecture
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for how this disclosure repo is organized.
 
 ---
 
-## 1. Executive Summary
+## Disclosure report
+
+**Assessment method:** Manual testing, proxy interception, client-side inspection  
+**Target:** aifiesta.ai platform
+
+### 1. Executive Summary
 
 During routine security testing of the platform, multiple **critical P0 vulnerabilities** were identified that allow:
 
