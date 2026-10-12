@@ -9,11 +9,11 @@
 
 During routine security testing of the platform, multiple **critical P0 vulnerabilities** were identified that allow:
 
-- ✅ Unlimited usage of premium Large Language Models (LLMs) without payment
-- ✅ Bypass of free-tier message limits (infinite usage)
-- ✅ Creation of unlimited chats & model executions
-- ✅ Misconfigured client-side access controls
-- ✅ Potential massive financial loss (LLM inference cost drain)
+-  Unlimited usage of premium Large Language Models (LLMs) without payment
+-  Bypass of free-tier message limits (infinite usage)
+-  Creation of unlimited chats & model executions
+-  Misconfigured client-side access controls
+-  Potential massive financial loss (LLM inference cost drain)
 
 These issues exist due to:
 - Client-side authorization logic
@@ -26,7 +26,7 @@ These issues exist due to:
 
 ## 2. Vulnerabilities Identified
 
-### 🔥 VULNERABILITY #1 — Free Users Can Use Paid/Premium Models
+###  VULNERABILITY #1 — Free Users Can Use Paid/Premium Models
 
 **Severity:** Critical (P0)  
 **Impact:** Full bypass of subscription system → direct financial loss
@@ -58,13 +58,13 @@ The client sends a POST request to `/api/v2/completions` with the chosen model n
 - No server-side subscription enforcement
 
 #### Recommended Fix
-- ✅ Enforce model-access authorization on the backend
-- ✅ Client-selected model must never be trusted
-- ✅ Reject model usage unless `user.subscription_tier >= model.required_tier`
+-  Enforce model-access authorization on the backend
+-  Client-selected model must never be trusted
+-  Reject model usage unless `user.subscription_tier >= model.required_tier`
 
 ---
 
-### 🔥 VULNERABILITY #2 — Free Users Can Send Unlimited Messages
+###  VULNERABILITY #2 — Free Users Can Send Unlimited Messages
 
 **Severity:** Critical (P0)  
 **Impact:** Unlimited platform usage, resource exhaustion
@@ -96,13 +96,13 @@ Since the client controls when this request is sent, an attacker can:
 - Potential denial-of-wallet (cost flooding)
 
 #### Recommended Fix
-- ✅ Move message counting to backend
-- ✅ Only increment after verifying subscription tier and processing model request
-- ✅ Requests without increment MUST be rejected
+-  Move message counting to backend
+-  Only increment after verifying subscription tier and processing model request
+-  Requests without increment MUST be rejected
 
 ---
 
-### ⚠️ VULNERABILITY #3 — Client-Generated Chat/Group IDs
+###  VULNERABILITY #3 — Client-Generated Chat/Group IDs
 
 **Severity:** High  
 **Impact:** Cross-account chat injection, arbitrary chat creation, message spoofing
@@ -114,13 +114,13 @@ Since the client controls when this request is sent, an attacker can:
 - System does not enforce isolation per user ID
 
 #### Recommended Fix
-- ✅ Generate chat IDs server-side
-- ✅ Enforce uniqueness + ownership mapping in DB
-- ✅ Reject any request where: `conversation.userId ≠ request.userId`
+-  Generate chat IDs server-side
+-  Enforce uniqueness + ownership mapping in DB
+-  Reject any request where: `conversation.userId ≠ request.userId`
 
 ---
 
-### ⚠️ VULNERABILITY #4 — Supabase Public Anon Keys Exposed
+###  VULNERABILITY #4 — Supabase Public Anon Keys Exposed
 
 **Severity:** High  
 **Impact:** Potential data exposure
@@ -132,22 +132,22 @@ Since the client controls when this request is sent, an attacker can:
 - Attackers can directly access DB endpoints using anon key unless RLS (Row Level Security) is perfectly configured
 
 #### Recommended Fix
-- ✅ Move business logic (message count, chat creation, model routing) to backend server
-- ✅ Use Supabase service role keys ONLY on backend
-- ✅ Restrict anon key to only minimal operations
+-  Move business logic (message count, chat creation, model routing) to backend server
+-  Use Supabase service role keys ONLY on backend
+-  Restrict anon key to only minimal operations
 
 ---
 
-### ⚠️ VULNERABILITY #5 — No Rate Limiting / Abuse Protection
+###  VULNERABILITY #5 — No Rate Limiting / Abuse Protection
 
 **Severity:** High  
 **Impact:** API credit drain, automated abuse, potential platform outage
 
 #### Recommended Fix
 Implement:
-- ✅ Global rate limiting (IP + user ID)
-- ✅ Billing-based hard limits
-- ✅ Abuse-detection monitoring
+-  Global rate limiting (IP + user ID)
+-  Billing-based hard limits
+-  Abuse-detection monitoring
 
 ---
 
@@ -189,3 +189,8 @@ curl https://api.aifiesta.ai/v2/completions \
 ---
 
 **Please confirm receipt of this report and provide an estimated timeline for remediation.**
+
+## License
+
+Licensed under the [HackerX License](./LICENSE). Redistributions must retain copyright,
+license text, and [NOTICE](./NOTICE) attribution per the license terms.
