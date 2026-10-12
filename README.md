@@ -190,6 +190,10 @@ curl https://api.aifiesta.ai/v2/completions \
 
 **Please confirm receipt of this report and provide an estimated timeline for remediation.**
 
+## Ethics
+
+Use only on systems and content you are **authorized** to access. See [SECURITY.md](./SECURITY.md).
+
 ## License
 
 Licensed under the [HackerX License](./LICENSE). Redistributions must retain copyright,
