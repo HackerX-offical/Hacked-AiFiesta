@@ -15,7 +15,7 @@ Captures critical client/API authorization flaws discovered during authorized te
 ## Install
 
 ```bash
-git clone https://github.com/HackerX-offical/Hacked-AiFiesta.git
+git clone https://github.com/HackerX-official/Hacked-AiFiesta.git
 cd Hacked-AiFiesta
 ```
 
